@@ -1,0 +1,11 @@
+---
+import Link from "@/components/Link.astro";
+import ArrowUp from "@/icons/arrow-up-right.svg";
+
+const {style = "transparent"} = Astro.props;
+---
+
+<Link href="mailto:contacto@stephanofer.com" style={style}>
+  <ArrowUp slot="icon-right" />
+  ¡Enviar un Mensaje!
+</Link>

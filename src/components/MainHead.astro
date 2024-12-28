@@ -1,0 +1,93 @@
+---
+import '@/styles/global.css'
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Stephano Fernandez - Desarrollador Fullstack",
+  description = "¡Hola! Soy Stephano Fernandez: Desarrollador Fullstack. Explora mis proyectos y habilidades técnicas.",
+} = Astro.props;
+
+const url = "https://stephanofer.com/";
+---
+
+<!-- Google tag (gtag.js) -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4JE9KFR9VE"
+></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-4JE9KFR9VE");
+</script>
+
+
+
+<meta charset="UTF-8" />
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2">
+<link rel="preload" href="/fonts/clash.woff2" as="font" type="font/woff2">
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Stephano Fernandez" />
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+<meta name="robots" content="index, follow" />
+<meta
+  name="keywords"
+  content="Desarrollador web, Desarrolador Fullstack, Stephano, Fernandez, Stephano Fernandez, NestJS, Astro, Angular"
+/>
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<meta
+  property="og:image"
+  content="https://stephanofer.com/_astro/me-avatar.ByI5-Ka__46mB6.webp"
+/>
+
+<title>{title}</title>
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta
+  property="twitter:image"
+  content="https://stephanofer.com/_astro/me-avatar.ByI5-Ka__46mB6.webp"
+/>
+
+<script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Stephano Fernandez",
+    "url": "https://stephanofer.com/",
+    "jobTitle": "Desarrollador Fullstack",
+    "description": "¡Hola! Soy Stephano Fernandez: Desarrollador Fullstack, con experiencia en proyectos innovadores de manera Freelance",
+    "sameAs": [
+      "https://www.linkedin.com/in/stephanofer",
+      "https://github.com/stephanofer"
+    ],
+    "knowsAbout": [
+      "React",
+      "Angular",
+      "Nodejs",
+      "Nestjs",
+      "Git",
+      "Linux",
+      "Docker",
+      "Typescript",
+      "Java",
+      "Desarrollado Fullstack",
+    ]
+  }
+</script>

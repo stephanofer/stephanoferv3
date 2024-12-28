@@ -1,0 +1,12 @@
+---
+import Link from "@/components/Link.astro";
+import File from "@/icons/file.svg";
+
+
+const { style = "green" } = Astro.props;
+---
+
+<Link style="green">
+  <File slot="icon-left" />
+  ¡Ver mi Currículum!
+</Link>

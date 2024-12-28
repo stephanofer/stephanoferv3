@@ -1,0 +1,55 @@
+---
+import LinkMensaje from "@/components/LinkMensaje.astro";
+import LinkCV from "@/components/LinkCV.astro";
+---
+
+<header>
+  <div class="container">
+    <div class="logo">
+      <h3>Stephano Fernandez</h3>
+      <span> Desarrollador Web Full-Stack </span>
+    </div>
+    <div class="buttons">
+      <LinkMensaje style="transparent" />
+      <LinkCV style="green" />
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    padding: 2.5rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h3 {
+    font-family: "Clash";
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  span {
+    font-size: var(--fs-sm);
+    color: rgb(113, 113, 113);
+  }
+
+  .buttons {
+    display: none;
+
+    @media (width > 1024px) {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+</style>
