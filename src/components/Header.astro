@@ -18,7 +18,12 @@ import LinkCV from "@/components/LinkCV.astro";
 
 <style>
   header {
-    padding: 2.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    @media (width > 1024px) {
+      padding: 2.5rem;
+    }
   }
 
   .container {
@@ -26,9 +31,12 @@ import LinkCV from "@/components/LinkCV.astro";
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    max-width: 90rem;
-    margin-left: auto;
-    margin-right: auto;
+
+    @media (width > 1024px) {
+      max-width: 90rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   h3 {

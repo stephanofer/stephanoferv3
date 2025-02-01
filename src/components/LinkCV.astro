@@ -3,10 +3,10 @@ import Link from "@/components/Link.astro";
 import File from "@/icons/file.svg";
 
 
-const { style = "green" } = Astro.props;
+const { style = "green", position = "icon-left" } = Astro.props;
 ---
 
-<Link style="green">
-  <File slot="icon-left" />
+<Link style={style}>
+  <File slot={position} />
   ¡Ver mi Currículum!
 </Link>
