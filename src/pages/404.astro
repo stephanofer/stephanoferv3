@@ -1,0 +1,453 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Page Not Found - 404";
+const description = "Oops! The page you're looking for doesn't exist.";
+---
+
+<Layout title={title} description={description}>
+  <main class="error-page">
+    <div class="error-container">
+      <!-- Animated 404 number -->
+      <div class="error-number">
+        <span class="digit" data-digit="4">4</span>
+        <span class="digit" data-digit="0">0</span>
+        <span class="digit" data-digit="4">4</span>
+      </div>
+
+      <!-- Main error message -->
+      <div class="error-content">
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-description">
+          Oops! It looks like you've wandered into the digital wilderness. 
+          The page you're searching for has gone exploring.
+        </p>
+      </div>
+
+      <!-- Interactive elements -->
+      <div class="error-actions">
+        <div class="action-buttons">
+          <a href="/" class="btn btn-primary">
+            <span class="btn-text">Go Home</span>
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </a>
+          
+          <button class="btn btn-secondary" id="goBackBtn">
+            <span class="btn-text">Go Back</span>
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="search-suggestion">
+          <p class="suggestion-text">Or try searching for what you need:</p>
+          <div class="search-box">
+            <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+            <button class="search-btn" id="searchBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating elements for visual interest -->
+      <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    // Interactive functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Go back button
+      const goBackBtn = document.getElementById('goBackBtn');
+      goBackBtn?.addEventListener('click', () => {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = '/';
+        }
+      });
+
+      // Search functionality
+      const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+      const searchBtn = document.getElementById('searchBtn');
+      
+      const performSearch = () => {
+        const query = searchInput?.value.trim();
+        if (query) {
+          // You can implement your search logic here
+          // For now, we'll redirect to a search page or home
+          window.location.href = `/?search=${encodeURIComponent(query)}`;
+        }
+      };
+
+      searchBtn?.addEventListener('click', performSearch);
+      searchInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+
+      // Add focus to search input
+      searchInput?.focus();
+
+      // Animate digits on load
+      const digits = document.querySelectorAll('.digit');
+      digits.forEach((digit, index) => {
+        setTimeout(() => {
+          digit.classList.add('animate-in');
+        }, index * 200);
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .error-container {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Animated 404 number */
+  .error-number {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+  }
+
+  .digit {
+    font-family: "Clash", sans-serif;
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0;
+    transform: rotateX(90deg) translateY(50px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 0 0 30px rgba(126, 224, 129, 0.3);
+  }
+
+  .digit.animate-in {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+  }
+
+  /* Error content */
+  .error-content {
+    margin-bottom: 3rem;
+  }
+
+  .error-title {
+    font-family: "Clash", sans-serif;
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 1rem 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  }
+
+  .error-description {
+    font-size: var(--fs-base);
+    color: #999;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  }
+
+  /* Action buttons */
+  .error-actions {
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    font-family: "Inter", sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn:hover::before {
+    left: 100%;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 4px 20px rgba(126, 224, 129, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(126, 224, 129, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #333;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover .btn-icon {
+    transform: scale(1.1);
+  }
+
+  /* Search section */
+  .search-suggestion {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.2s forwards;
+  }
+
+  .suggestion-text {
+    color: #666;
+    font-size: var(--fs-sm);
+    margin: 0 0 1rem 0;
+  }
+
+  .search-box {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(126, 224, 129, 0.2);
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: var(--fs-base);
+    outline: none;
+  }
+
+  .search-input::placeholder {
+    color: #666;
+  }
+
+  .search-btn {
+    padding: 0.875rem;
+    background: var(--primary);
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background: #6dd072;
+  }
+
+  /* Floating elements */
+  .floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary), transparent);
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .shape-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .shape-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+
+  .shape-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 4s;
+  }
+
+  .shape-4 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 30%;
+    animation-delay: 1s;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .error-container {
+      padding: 1rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+
+    .search-box {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .error-number {
+      gap: 0.25rem;
+    }
+
+    .digit {
+      font-size: clamp(3rem, 20vw, 6rem);
+    }
+
+    .error-title {
+      font-size: var(--fs-lg);
+    }
+
+    .error-description {
+      font-size: var(--fs-sm);
+    }
+  }
+
+  /* Dark mode enhancements */
+  @media (prefers-color-scheme: dark) {
+    .search-box {
+      background: #0a0a0a;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .digit,
+    .floating-shape,
+    .btn::before {
+      animation: none;
+      transition: none;
+    }
+
+    .digit {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

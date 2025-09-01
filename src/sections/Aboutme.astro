@@ -1,0 +1,59 @@
+---
+import SectionContainer from "@/components/SectionContainer.astro";
+---
+
+<SectionContainer>
+  <div class="container">
+    <div class="container-title">
+      <h2>Sobre mí</h2>
+      <p>
+        ¡Hola! Soy Stephano Fernández. Mi camino en el desarrollo de software
+        comenzó en 2020, cuando una simple curiosidad por crear plugins en Java
+        para networks de Minecraft despertó una verdadera pasión por la
+        programación.
+      </p>
+
+      <p>
+        Desde entonces, he estado en constante aprendizaje, combinando mis
+        estudios en Desarrollo de Sistemas de Información con proyectos
+        freelance que me han permitido aplicar mis conocimientos en entornos
+        reales.
+      </p>
+
+      <p>
+        Actualmente, estoy enfocado en crear soluciones que no solo sean
+        funcionales, sino también impactantes, escalables y centradas en la
+        experiencia del usuario. Para mí, cada proyecto es una oportunidad de
+        crecer, innovar y transformar ideas en realidades tecnológicas que
+        marquen la diferencia.
+      </p>
+    </div>
+
+    <div class="container-image">
+        <img src="/profile.webp" alt="me" height="100" width="100">
+    </div>
+  </div>
+</SectionContainer>
+
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .container-title {
+        margin-bottom: 5rem;
+    }
+
+    h2 {
+        font-family: "Clash";
+        font-weight: 600;
+        font-size: var(--fs-lg);
+    }
+    
+    p {
+        font-size: var(--fs-base);
+    }
+</style>
