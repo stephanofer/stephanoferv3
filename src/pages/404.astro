@@ -1,9 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '@/layouts/Layout.astro';
+import Link from '@/components/Link.astro';
 
-const title = "Page Not Found - 404";
-const description = "Oops! The page you're looking for doesn't exist.";
+import ArrowLeft from '@/icons/arrow-up-left.svg';
+import Bag from '@/icons/bag.svg';
+
+const title = "Página No Encontrada - 404";
+const description = "¡Ups! La página que buscas no existe.";
 ---
 
 <Layout title={title} description={description}>
@@ -18,29 +21,24 @@ const description = "Oops! The page you're looking for doesn't exist.";
 
       <!-- Main error message -->
       <div class="error-content">
-        <h1 class="error-title">Page Not Found</h1>
+        <h1 class="error-title">Página No Encontrada</h1>
         <p class="error-description">
-          Oops! It looks like you've wandered into the digital wilderness. 
-          The page you're searching for has gone exploring.
+          ¡Ups! Parece que te has aventurado en el desierto digital. 
+          La página que buscas se ha ido de exploración.
         </p>
       </div>
 
       <!-- Interactive elements -->
       <div class="error-actions">
         <div class="action-buttons">
-          <a href="/" class="btn btn-primary">
-            <span class="btn-text">Go Home</span>
-            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
-          </a>
-          
-          <button class="btn btn-secondary" id="goBackBtn">
-            <span class="btn-text">Go Back</span>
-            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-          </button>
+          <Link href="/" target="_self">
+            <ArrowLeft slot="icon-left"/>
+            ¡Volver al Inicio!
+          </Link>
+          <Link href="/#projects" style="transparent" target="_self">
+            ¡Últimos Proyectos!
+            <Bag slot="icon-right"/>
+          </Link>
         </div>
 
 
@@ -56,44 +54,8 @@ const description = "Oops! The page you're looking for doesn't exist.";
     </div>
   </main>
 
-
-  <script>
-    // Interactive functionality
+  <!-- <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Go back button
-      const goBackBtn = document.getElementById('goBackBtn');
-      goBackBtn?.addEventListener('click', () => {
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          window.location.href = '/';
-        }
-      });
-
-      // Search functionality
-      const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-      const searchBtn = document.getElementById('searchBtn');
-      
-      const performSearch = () => {
-        const query = searchInput?.value.trim();
-        if (query) {
-          // You can implement your search logic here
-          // For now, we'll redirect to a search page or home
-          window.location.href = `/?search=${encodeURIComponent(query)}`;
-        }
-      };
-
-      searchBtn?.addEventListener('click', performSearch);
-      searchInput?.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
-
-      // Add focus to search input
-      searchInput?.focus();
-
-      // Animate digits on load
       const digits = document.querySelectorAll('.digit');
       digits.forEach((digit, index) => {
         setTimeout(() => {
@@ -101,12 +63,12 @@ const description = "Oops! The page you're looking for doesn't exist.";
         }, index * 200);
       });
     });
-  </script>
+  </script> -->
 </Layout>
 
 <style>
   .error-page {
-    min-height: 100vh;
+    min-height: calc(100vh - 130px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +84,6 @@ const description = "Oops! The page you're looking for doesn't exist.";
     z-index: 2;
   }
 
-  /* Animated 404 number */
   .error-number {
     display: flex;
     justify-content: center;
@@ -140,14 +101,40 @@ const description = "Oops! The page you're looking for doesn't exist.";
     transform: rotateX(90deg) translateY(50px);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-shadow: 0 0 30px rgba(126, 224, 129, 0.3);
+    
+    /* Animación automática con delay basado en el orden */
+    animation: digitAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 
+  .digit:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .digit:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .digit:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes digitAppear {
+    from {
+      opacity: 0;
+      transform: rotateX(90deg) translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0deg) translateY(0);
+    }
+  }
+
+  /* Mantener la clase para compatibilidad */
   .digit.animate-in {
     opacity: 1;
     transform: rotateX(0deg) translateY(0);
   }
 
-  /* Error content */
   .error-content {
     margin-bottom: 3rem;
   }
@@ -164,14 +151,13 @@ const description = "Oops! The page you're looking for doesn't exist.";
 
   .error-description {
     font-size: var(--fs-base);
-    color: #999;
+    color: #7a7a7a;
     line-height: 1.6;
     margin: 0;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.8s forwards;
   }
 
-  /* Action buttons */
   .error-actions {
     margin-bottom: 2rem;
     opacity: 0;
@@ -186,123 +172,7 @@ const description = "Oops! The page you're looking for doesn't exist.";
     flex-wrap: wrap;
   }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 12px;
-    font-family: "Inter", sans-serif;
-    font-size: var(--fs-base);
-    font-weight: 500;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-  }
 
-  .btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-  }
-
-  .btn:hover::before {
-    left: 100%;
-  }
-
-  .btn-primary {
-    background: var(--primary);
-    color: #000;
-    box-shadow: 0 4px 20px rgba(126, 224, 129, 0.3);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(126, 224, 129, 0.4);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: #fff;
-    border: 2px solid #333;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-2px);
-  }
-
-  .btn-icon {
-    transition: transform 0.3s ease;
-  }
-
-  .btn:hover .btn-icon {
-    transform: scale(1.1);
-  }
-
-  /* Search section */
-  .search-suggestion {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1.2s forwards;
-  }
-
-  .suggestion-text {
-    color: #666;
-    font-size: var(--fs-sm);
-    margin: 0 0 1rem 0;
-  }
-
-  .search-box {
-    display: flex;
-    max-width: 400px;
-    margin: 0 auto;
-    background: #111;
-    border: 2px solid #333;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .search-box:focus-within {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(126, 224, 129, 0.2);
-  }
-
-  .search-input {
-    flex: 1;
-    padding: 0.875rem 1rem;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: var(--fs-base);
-    outline: none;
-  }
-
-  .search-input::placeholder {
-    color: #666;
-  }
-
-  .search-btn {
-    padding: 0.875rem;
-    background: var(--primary);
-    border: none;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .search-btn:hover {
-    background: #6dd072;
-  }
 
   /* Floating elements */
   .floating-elements {
