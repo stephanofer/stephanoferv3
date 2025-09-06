@@ -1,8 +1,0 @@
-name = "stephanofer-porfolio"
-compatibility_date = "2025-06-22"
-routes = [
-  { pattern = "stephanofer.com", custom_domain = true }
-]
-
-[assets]
-directory = "./dist"
