@@ -18,7 +18,7 @@ const {
   class:list={["sociallink", style ?? "green"]}
 >
   <slot name="icon-left" />
-  <span> <slot /> </span>
+  <span> <slot /></span>
   <slot name="icon-right" />
 </a>
 
@@ -64,4 +64,9 @@ const {
       border-color: white;
     }
   }
+
+  span {
+    display: flex;
+  }
+
 </style>

@@ -1,25 +1,224 @@
 ---
+import Add from "@/icons/add.svg";
+
+import ReactIcon from "@/icons/react.svg";
+import AstroIcon from "@/icons/astro.svg";
+import HtmlIcon from "@/icons/html.svg";
+import CssIcon from "@/icons/css.svg";
+import WorkersIcon from "@/icons/workers.svg";
+import NestJSIcon from "@/icons/nestjs.svg";
+import SentryIcon from "@/icons/sentry.svg";
+import PrismaIcon from "@/icons/prisma.svg";
+import TailwindIcon from "@/icons/tailwind.svg";
+import TypeScriptIcon from "@/icons/typescript.svg";
+import TechnologyPill from "./TechnologyPill.astro";
+import Link from "@/components/Link.astro";
+import ArrowUp from "@/icons/arrow-up-right.svg";
+// Agrega más iconos según necesites
 interface Props {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  github?: string;
+  demo?: string;
+  publishDate: Date;
+  status: string;
 }
 
-const { title, description, image, link } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  publishDate,
+  status,
+  technologies,
+  demo,
+  github,
+} = Astro.props;
+
+const iconMap: Record<string, any> = {
+  react: {
+    icon: ReactIcon,
+    name: "React",
+  },
+  astro: {
+    icon: AstroIcon,
+    name: "Astro",
+  },
+  html: {
+    icon: HtmlIcon,
+    name: "HTML5",
+  },
+  css: {
+    icon: CssIcon,
+    name: "CSS3",
+  },
+  workers: {
+    icon: WorkersIcon,
+    name: "Workers",
+  },
+  nestjs: {
+    icon: NestJSIcon,
+    name: "NestJS",
+  },
+  typescript: {
+    icon: TypeScriptIcon,
+    name: "TypeScript",
+  },
+  prisma: {
+    icon: PrismaIcon,
+    name: "Prisma",
+  },
+  sentry: {
+    icon: SentryIcon,
+    name: "Sentry",
+  },
+  tailwind: {
+    icon: TailwindIcon,
+    name: "Tailwind CSS",
+  },
+};
 ---
 
 <div class="container">
+  <Add class="corner corner-top-left" width={14} height={14} />
+  <Add class="corner corner-top-right" width={14} height={14} />
+  <Add class="corner corner-bottom-left" width={14} height={14} />
+  <Add class="corner corner-bottom-right" width={14} height={14} />
+  <div class="container-image">
+    {image && <img src={image} alt="asd" />}
+  </div>
+  <div class="container-description">
     <h3>{title}</h3>
     <span>{description}</span>
-    <img src={image} alt={title} />
-    <a href={link} target="_blank">Ver proyecto</a>
+    <div
+      class:list={["technologies", technologies.length > 3 ? "has-more" : ""]}
+    >
+      {
+        technologies.slice(0, 3).map((tech) => {
+          const techInfo = iconMap[tech.toLowerCase()];
+
+          return techInfo ? (
+            <TechnologyPill>
+              <techInfo.icon width={16} height={16} slot="icon" />
+              {techInfo.name}
+            </TechnologyPill>
+          ) : null;
+        })
+      }
+      {
+        technologies.length > 3 && (
+          <TechnologyPill>{`+${technologies.length - 3}`}</TechnologyPill>
+        )
+      }
+    </div>
+    <div class="buttons">
+      <Link href="mailto:contacto@stephanofer.com" style="transparent" >
+        <ArrowUp slot="icon-right" />
+        ¡Github!
+      </Link>
+      <Link href="mailto:contacto@stephanofer.com">
+        <ArrowUp slot="icon-right" />
+        ¡Demo!
+      </Link>
+    </div>
+  </div>
 </div>
 
 <style>
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 2px solid #191919;
+    border-style: dotted;
+    padding: 0.1rem;
+    position: relative;
+    overflow: visible;
+  }
+
+  .corner {
+    position: absolute;
+    z-index: 10;
+  }
+
+  .corner-top-left {
+    top: -7px;
+    left: -7px;
+  }
+
+  .corner-top-right {
+    top: -7px;
+    right: -7px;
+  }
+
+  .corner-bottom-left {
+    bottom: -7px;
+    left: -7px;
+  }
+
+  .corner-bottom-right {
+    bottom: -7px;
+    right: -7px;
+  }
+
+  .container-image {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container-description {
+    padding: 1rem;
+  }
+
+  h3 {
+    font-family: "Clash";
+    font-weight: 600;
+    font-size: var(--fs-md);
+    margin-bottom: 1rem;
+  }
+
+  span {
+    font-size: var(--fs-base);
+    font-family:;
+    color: #7a7a7a;
+    display: block;
+    margin-bottom: 1rem;
+    max-width: 45ch;
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .has-more {
+    background-color: var(--foreground);
+    color: white;
+    gap: 0.3rem;
+  }
+
+  .tech-badge {
+    color: var(--foreground);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: white;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 </style>

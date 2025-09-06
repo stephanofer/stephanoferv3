@@ -1,12 +1,22 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import HeroSection from '@/sections/Hero.astro'
-import ProjectsSection from '@/sections/Projects.astro'
-import AboutmeSection from '@/sections/Aboutme.astro'
+import Layout from "@/layouts/Layout.astro";
+import HeroSection from "@/sections/Hero.astro";
+import ProjectsSection from "@/sections/Projects.astro";
+import AboutmeSection from "@/sections/Aboutme.astro";
 ---
 
 <Layout>
-	<HeroSection/>
-	<ProjectsSection/>
-	<AboutmeSection/>
+  <HeroSection />
+  <ProjectsSection />
+  <div class="widthfull">
+    <AboutmeSection />
+  </div>
 </Layout>
+
+<style>
+	.widthfull {
+		width: 100%;
+		background-color: white;
+        margin-top: 5rem;
+	}
+</style>

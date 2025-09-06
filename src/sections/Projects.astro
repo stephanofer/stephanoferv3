@@ -5,10 +5,12 @@ import Project from "@/components/Project.astro";
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  (a, b) => (a.data.order || 999) - (b.data.order || 999)
 );
 const featuredProjects = projects.filter((project) => project.data.featured);
 const otherProjects = projects.filter((project) => !project.data.featured);
+
+console.log(projects);
 ---
 
 <SectionContainer>
@@ -27,7 +29,11 @@ const otherProjects = projects.filter((project) => !project.data.featured);
             title={project.data.title}
             description={project.data.description}
             image={project.data.image}
-            link={project.data.image}
+            technologies={project.data.technologies}
+            github={project.data.github}
+            demo={project.data.demo}
+            publishDate={project.data.publishDate}
+            status={project.data.status}
           />
         ))
       }
@@ -40,6 +46,7 @@ const otherProjects = projects.filter((project) => !project.data.featured);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .container-title {
@@ -50,17 +57,32 @@ const otherProjects = projects.filter((project) => !project.data.featured);
   h2 {
     font-family: "Clash";
     font-weight: 600;
-    font-size: var(--fs-lg);
+    font-size: var(--fs-xl);
   }
 
   span {
     font-size: var(--fs-base);
+    color: #7a7a7a;
+
+    /* background-image: linear-gradient(
+        to right,
+        #95ECB0 0%,
+        #F3F98A 100%
+      );
+      background-clip: text;
+      color: transparent; */
   }
 
   .projects {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 100%;
+    /* flex-direction: row; */
+    /* align-items: center; */
     gap: 1rem;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>
