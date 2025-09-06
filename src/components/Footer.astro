@@ -1,9 +1,8 @@
 ---
-const currentYear = new Date().getFullYear();
 import Link from "@/components/Link.astro";
+import Email from "@/icons/email.svg";
 import Github from "@/icons/github.svg";
 import Linkedin from "@/icons/linkedin.svg";
-import Email from "@/icons/email.svg";
 ---
 
 <footer class="footer">
@@ -22,13 +21,13 @@ import Email from "@/icons/email.svg";
       </div>
       <div class="socials">
         <Link style="transparent">
-          <Github width={24} height={24}/>
+          <Github width={24} height={24} />
         </Link>
         <Link style="transparent">
-          <Linkedin width={24} height={24}/>
+          <Linkedin width={24} height={24} />
         </Link>
         <Link style="transparent">
-          <Email width={24} height={24}/>
+          <Email width={24} height={24} />
         </Link>
       </div>
     </div>
@@ -43,8 +42,8 @@ import Email from "@/icons/email.svg";
     line-height: 1.5rem;
   }
 
-  span{
-    color: rgb(113, 113, 113);
+  span {
+    color: var(--color-text);
   }
   .logo-description {
     font-size: var(--fs-sm);
@@ -89,7 +88,7 @@ import Email from "@/icons/email.svg";
     font-size: var(--fs-base);
   }
 
-  .socials{
+  .socials {
     display: flex;
     gap: 1rem;
   }

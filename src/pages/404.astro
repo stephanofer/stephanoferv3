@@ -1,9 +1,9 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Link from '@/components/Link.astro';
+import Layout from "@/layouts/Layout.astro";
+import Link from "@/components/Link.astro";
 
-import ArrowLeft from '@/icons/arrow-up-left.svg';
-import Bag from '@/icons/bag.svg';
+import ArrowLeft from "@/icons/arrow-up-left.svg";
+import Bag from "@/icons/bag.svg";
 
 const title = "Página No Encontrada - 404";
 const description = "¡Ups! La página que buscas no existe.";
@@ -23,8 +23,8 @@ const description = "¡Ups! La página que buscas no existe.";
       <div class="error-content">
         <h1 class="error-title">Página No Encontrada</h1>
         <p class="error-description">
-          ¡Ups! Parece que te has aventurado en el desierto digital. 
-          La página que buscas se ha ido de exploración.
+          ¡Ups! Parece que te has aventurado en el desierto digital. La página
+          que buscas se ha ido de exploración.
         </p>
       </div>
 
@@ -32,16 +32,14 @@ const description = "¡Ups! La página que buscas no existe.";
       <div class="error-actions">
         <div class="action-buttons">
           <Link href="/" target="_self">
-            <ArrowLeft slot="icon-left"/>
+            <ArrowLeft slot="icon-left" />
             ¡Volver al Inicio!
           </Link>
           <Link href="/#projects" style="transparent" target="_self">
             ¡Últimos Proyectos!
-            <Bag slot="icon-right"/>
+            <Bag slot="icon-right" />
           </Link>
         </div>
-
-
       </div>
 
       <!-- Floating elements for visual interest -->
@@ -101,7 +99,7 @@ const description = "¡Ups! La página que buscas no existe.";
     transform: rotateX(90deg) translateY(50px);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-shadow: 0 0 30px rgba(126, 224, 129, 0.3);
-    
+
     /* Animación automática con delay basado en el orden */
     animation: digitAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
@@ -151,7 +149,7 @@ const description = "¡Ups! La página que buscas no existe.";
 
   .error-description {
     font-size: var(--fs-base);
-    color: #7a7a7a;
+    color: var(--color-text);
     line-height: 1.6;
     margin: 0;
     opacity: 0;
@@ -171,8 +169,6 @@ const description = "¡Ups! La página que buscas no existe.";
     margin-bottom: 2rem;
     flex-wrap: wrap;
   }
-
-
 
   /* Floating elements */
   .floating-elements {
@@ -238,7 +234,8 @@ const description = "¡Ups! La página que buscas no existe.";
   }
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px) rotate(0deg);
     }
     50% {

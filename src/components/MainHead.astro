@@ -3,20 +3,64 @@ import "@/styles/global.css";
 import { SEO } from "astro-seo";
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
 }
 
-const {
-  title = "Stephano Fernandez - Desarrollador Fullstack",
-  description = "¡Hola! Soy Stephano Fernandez: Desarrollador Fullstack. Explora mis proyectos y habilidades técnicas.",
-} = Astro.props;
+const { title, description } = Astro.props;
 
-const url = "https://stephanofer.com/";
+const url = "https://stephanofer.com";
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+
+<SEO
+  title={title}
+  description={description}
+  extend={{
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+      { name: "author", content: "Stephano Fernandez" },
+      {
+        name: "keywords",
+        content:
+          "Desarrollador web, Desarrolador Fullstack, Stephano, Fernandez, Stephano Fernandez, NestJS, Astro, Angular",
+      },
+    ],
+    link: [{ rel: "icon", type: "image/svg+xml", href: "favicon.svg" }],
+  }}
+  openGraph={{
+    basic: {
+      title: title,
+      type: "website",
+      image: "/opengraph.webp",
+    },
+    optional: {
+      description: description,
+    },
+  }}
+  twitter={{
+    card: "summary_large_image",
+    site: "@stephanofer",
+    creator: "@stephanofer",
+    title: title,
+    description: description,
+    image: "/opengraph.webp",
+  }}
+/>
+
+<script is:inline>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-K6ZNK44M");
+</script>
 
 <link
   rel="preload"
@@ -32,64 +76,46 @@ const url = "https://stephanofer.com/";
   type="font/woff2"
   crossorigin="anonymous"
 />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-<SEO title={title} description={description} />
-
-
-
-<meta name="author" content="Stephano Fernandez" />
-<meta name="robots" content="index, follow" />
-
-<meta
-  name="keywords"
-  content="Desarrollador web, Desarrolador Fullstack, Stephano, Fernandez, Stephano Fernandez, NestJS, Astro, Angular"
-/>
-
-<meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-
-<meta
-  property="og:image"
-  content="https://stephanofer.com/_astro/me-avatar.ByI5-Ka__46mB6.webp"
-/>
-
-
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={url} />
-
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta
-  property="twitter:image"
-  content="https://stephanofer.com/_astro/me-avatar.ByI5-Ka__46mB6.webp"
-/>
 
 <script is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Stephano Fernandez",
+    "alternateName": "Stephanofer",
     "url": "https://stephanofer.com/",
+    "image": "/profile.webp",
     "jobTitle": "Desarrollador Fullstack",
-    "description": "¡Hola! Soy Stephano Fernandez: Desarrollador Fullstack, con experiencia en proyectos innovadores de manera Freelance",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    },
+    "description": "Desarrollador Fullstack con experiencia en proyectos innovadores. Especializado en React, Angular, Node.js y tecnologías modernas.",
+    "email": "stephano.fernandez.03@gmail.com",
+    "telephone": "+51981314610",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PE"
+    },
     "sameAs": [
       "https://www.linkedin.com/in/stephanofer",
-      "https://github.com/stephanofer"
+      "https://github.com/stephanofer",
+      "https://twitter.com/stephanofer"
     ],
     "knowsAbout": [
+      "JavaScript",
+      "TypeScript",
       "React",
       "Angular",
-      "Nodejs",
-      "Nestjs",
+      "Node.js",
+      "NestJS",
       "Git",
       "Linux",
       "Docker",
-      "Typescript",
-      "Java",
-      "Desarrollado Fullstack"
-    ]
+      "Desarrollo Fullstack",
+      "Desarrollo Web"
+    ],
+    "alumniOf": "Universidad/Institución",
+    "birthPlace": "Lima, Perú"
   }
 </script>

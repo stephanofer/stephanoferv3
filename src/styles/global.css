@@ -1,26 +1,6 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-:root {
-  color-scheme: light dark;
-  --fs-sm: clamp(0.8rem, -0.09vi + 0.82rem, 0.75rem);
-  --fs-base: clamp(1rem, 0vi + 1rem, 1rem);
-  --fs-md: clamp(1.20rem, 0.15vi + 1.21rem, 1.33rem);
-  --fs-lg: clamp(1.56rem, 0.39vi + 1.47rem, 1.78rem);
-  --fs-xl: clamp(1.95rem, 0.76vi + 1.76rem, 2.37rem);
-  --fs-xxl: clamp(2.44rem, 1.3vi + 2.12rem, 3.16rem);
-  --fs-xxxl: clamp(3.05rem, 2.1vi + 2.53rem, 6.21rem);
-  --primary: #7EE081;
-  --foreground: #000;
-}
-
 @font-face {
   font-family: "Inter";
-  font-style: normal; 
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
   src: url("/fonts/inter.woff2") format("woff2");
@@ -34,9 +14,31 @@
   src: url("/fonts/clash.woff2") format("woff2");
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  color-scheme: light dark;
+  --fs-sm: clamp(0.8rem, -0.09vi + 0.82rem, 0.75rem);
+  --fs-base: clamp(1rem, 0vi + 1rem, 1rem);
+  --fs-md: clamp(1.2rem, 0.15vi + 1.21rem, 1.33rem);
+  --fs-lg: clamp(1.56rem, 0.39vi + 1.47rem, 1.78rem);
+  --fs-xl: clamp(1.95rem, 0.76vi + 1.76rem, 2.37rem);
+  --fs-xxl: clamp(2.44rem, 1.3vi + 2.12rem, 3.16rem);
+  --fs-xxxl: clamp(3.05rem, 2.1vi + 2.53rem, 6.21rem);
+  --background: #000;
+  --foreground: #000;
+  --primary: #7ee081;
+  --color-text: #717171;
+}
+
 html,
 body {
-  background: #000;
+  background: var(--background);
   font-family: "Inter", sans-serif;
   margin: 0;
   width: 100%;
@@ -53,6 +55,7 @@ body {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 li {

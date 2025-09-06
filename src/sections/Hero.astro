@@ -1,11 +1,10 @@
 ---
+import Link from "@/components/Link.astro";
 import LinkCV from "@/components/LinkCV.astro";
-import LinkMensaje from "@/components/LinkMensaje.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
-import Mouse from "@/icons/mouse.svg";
 import Arrowdown from "@/icons/arrow-down.svg";
-import Link from "@/components/Link.astro"; 
-import Bag from '@/icons/bag.svg'
+import Bag from "@/icons/bag.svg";
+import Mouse from "@/icons/mouse.svg";
 ---
 
 <SectionContainer id="home">
@@ -19,119 +18,108 @@ import Bag from '@/icons/bag.svg'
       </p>
     </div>
     <div class="buttons">
-        <Link style="green">
-        <Bag slot="icon-left"/>
+      <Link style="green">
+        <Bag slot="icon-left" />
         ¡Revisar Proyectos!
-        </Link>
-        <LinkCV style="transparent" position="icon-right"/>
+      </Link>
+      <LinkCV style="transparent" position="icon-right" />
     </div>
     <div class="mouse">
       <Mouse height={30} />
       <Arrowdown class="animated" />
     </div>
   </div>
-
-
 </SectionContainer>
 
 <style>
-    .container {
-      height: calc(100dvh - 91.5px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2rem;
+  .container {
+    height: calc(100dvh - 91.5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
 
-      @media (width > 1024px) {
+    @media (width > 1024px) {
       height: calc(100dvh - 130px);
     }
-    }
+  }
 
-    .title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
 
-    h1 {
-      font-family: "Clash";
-      font-weight: 600;
-      max-width: 21ch;
-      text-align: center;
+  h1 {
+    font-family: "Clash";
+    font-weight: 600;
+    max-width: 21ch;
+    text-align: center;
+    font-size: var(--fs-xxl);
+    line-height: 1;
+
+    background-image: linear-gradient(
+      to right,
+      rgb(255 255 255 / 50%) 0%,
+      rgb(255 255 255 / 70%) 9%,
+      rgb(255 255 255 / 100%) 37%,
+      rgb(255 255 255 / 100%) 50%,
+      rgb(255 255 255 / 100%) 73%,
+      rgb(255 255 255 / 24%) 100%
+    );
+    background-clip: text;
+    color: transparent;
+
+    @media (width > 1800px) {
       font-size: var(--fs-xxl);
-      line-height: 1;
-
-      background-image: linear-gradient(
-        to right,
-        rgb(255 255 255 / 50%) 0%,
-        rgb(255 255 255 / 70%) 9%,
-        rgb(255 255 255 / 100%) 37%,
-        rgb(255 255 255 / 100%) 50%,
-        rgb(255 255 255 / 100%) 73%,
-        rgb(255 255 255 / 24%) 100%
-      );
-      background-clip: text;
-      color: transparent;
-
-      @media (width > 1800px) {
-
-      font-size: var(--fs-xxl);
-
     }
-    }
+  }
 
-    p {
-      max-width: 70ch;
-      text-align: center;
-      font-size: var(--fs-base);
+  p {
+    max-width: 70ch;
+    text-align: center;
+    font-size: var(--fs-base);
 
+    background-image: linear-gradient(to right, #95ecb0 0%, #f3f98a 100%);
+    background-clip: text;
+    color: transparent;
+  }
 
-      background-image: linear-gradient(
-        to right,
-        #95ECB0 0%,
-        #F3F98A 100%
-      );
-      background-clip: text;
-      color: transparent;
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
 
-    }
-
-    .buttons {
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 2rem;
-      gap: 1rem;
-
-      @media (width > 1024px) {
+    @media (width > 1024px) {
       flex-direction: row;
       margin-bottom: 4rem;
       gap: 1.5rem;
     }
-    }
+  }
 
-    .mouse {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
+  .mouse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-    .animated {
-      animation: bounce 1s infinite;
-    }
+  .animated {
+    animation: bounce 1s infinite;
+  }
 
-    @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(-25%);
-        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-      }
-      50% {
-        transform: none;
-        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-      }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
-  </style>
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+</style>

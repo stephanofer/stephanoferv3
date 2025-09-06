@@ -1,6 +1,6 @@
 ---
-import SectionContainer from "@/components/SectionContainer.astro";
 import Project from "@/components/Project.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
 
 import { getCollection } from "astro:content";
 
@@ -9,8 +9,6 @@ const projects = (await getCollection("projects")).sort(
 );
 const featuredProjects = projects.filter((project) => project.data.featured);
 const otherProjects = projects.filter((project) => !project.data.featured);
-
-console.log(projects);
 ---
 
 <SectionContainer id="projects">
@@ -62,23 +60,13 @@ console.log(projects);
 
   span {
     font-size: var(--fs-base);
-    color: #7a7a7a;
-
-    /* background-image: linear-gradient(
-        to right,
-        #95ECB0 0%,
-        #F3F98A 100%
-      );
-      background-clip: text;
-      color: transparent; */
+    color: var(--color-text);
   }
 
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     max-width: 100%;
-    /* flex-direction: row; */
-    /* align-items: center; */
     gap: 1rem;
 
     @media (min-width: 1200px) {

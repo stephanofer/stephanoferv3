@@ -11,10 +11,11 @@ import SentryIcon from "@/icons/sentry.svg";
 import PrismaIcon from "@/icons/prisma.svg";
 import TailwindIcon from "@/icons/tailwind.svg";
 import TypeScriptIcon from "@/icons/typescript.svg";
+import Github from "@/icons/github.svg";
+import Web from "@/icons/web.svg";
 import TechnologyPill from "./TechnologyPill.astro";
 import Link from "@/components/Link.astro";
 import ArrowUp from "@/icons/arrow-up-right.svg";
-// Agrega más iconos según necesites
 interface Props {
   title: string;
   description: string;
@@ -113,14 +114,24 @@ const iconMap: Record<string, any> = {
         )
       }
     </div>
-    <div class="buttons">
-      <Link href="mailto:contacto@stephanofer.com" style="transparent" >
-        <ArrowUp slot="icon-right" />
-        ¡Github!
-      </Link>
-      <Link href="mailto:contacto@stephanofer.com">
-        <ArrowUp slot="icon-right" />
-        ¡Demo!
+    <div class="buttons" class:list={[!demo ? "without-demo" : ""]}>
+      {
+        github && demo && (
+          <a href={github} class="code">
+            Revisar Codigo
+          </a>
+        )
+      }
+
+      <Link href={demo || github}>
+        {
+          demo ? (
+            <Web slot="icon-right" width={16} height={16} />
+          ) : (
+            <Github slot="icon-right" width={16} height={16} />
+          )
+        }
+        {demo ? "¡Demo!" : "Código"}
       </Link>
     </div>
   </div>
@@ -187,7 +198,7 @@ const iconMap: Record<string, any> = {
   span {
     font-size: var(--fs-base);
     font-family:;
-    color: #7a7a7a;
+    color: var(--color-text);
     display: block;
     margin-bottom: 1rem;
     max-width: 45ch;
@@ -217,8 +228,24 @@ const iconMap: Record<string, any> = {
   .buttons {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     margin-top: 1.5rem;
+  }
+
+  .without-demo {
+    justify-content: end;
+  }
+
+  .code {
+    color: var(--color-text);
+    font-size: var(--fs-sm);
+    text-decoration: underline;
+    transition: color 250ms ease;
+
+    &:hover {
+      color: var(--primary);
+    }
   }
 </style>
