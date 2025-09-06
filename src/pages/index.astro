@@ -6,17 +6,28 @@ import ProjectsSection from "@/sections/Projects.astro";
 ---
 
 <Layout>
-  <HeroSection />
-  <ProjectsSection />
-  <div class="widthfull">
-    <AboutmeSection />
-  </div>
+  <main>
+    <HeroSection />
+    <ProjectsSection />
+    <div class="widthfull">
+      <AboutmeSection />
+    </div>
+  </main>
 </Layout>
 
 <style>
-	.widthfull {
-		width: 100%;
-		background-color: white;
-        margin-top: 5rem;
-	}
+
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .widthfull {
+    width: 100%;
+    background-color: white;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+  }
 </style>
