@@ -1,6 +1,6 @@
 ---
 title: "Ebanos Muebles - Landing Page"
-description: "Tienda online completa con carrito, pagos y panel de administración y mucho texto mas que me da floejra escribir"
+description: "Sitio web con el objetivo de fortalecer la presencia digital de la marca Ebanos Muebles. Incluye secciones optimizadas para captar leads."
 technologies: ["Astro", "sentry", "workers",]
 github: "https://github.com/tuusuario/ecommerce-app"
 demo: "https://mi-ecommerce.vercel.app"

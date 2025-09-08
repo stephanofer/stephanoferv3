@@ -197,19 +197,29 @@ const iconMap: Record<string, any> = {
   }
 
   h3 {
-    font-family: "Clash";
+    font-family: "Clash", system-ui, -apple-system, sans-serif;
     font-weight: 600;
     font-size: var(--fs-md);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 
   span {
     font-size: var(--fs-base);
-    font-family:;
     color: var(--color-text);
     display: block;
     margin-bottom: 1rem;
     max-width: 45ch;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .technologies {
@@ -231,6 +241,8 @@ const iconMap: Record<string, any> = {
     font-size: var(--fs-sm);
     font-weight: 500;
     color: white;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
   }
 
   .buttons {
@@ -250,10 +262,16 @@ const iconMap: Record<string, any> = {
     color: var(--color-text);
     font-size: var(--fs-sm);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     transition: color 250ms ease;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
 
     &:hover {
       color: var(--primary);
+      text-decoration-thickness: 2px;
     }
   }
+
 </style>
