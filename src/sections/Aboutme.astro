@@ -2,7 +2,7 @@
 import SectionContainer from "@/components/SectionContainer.astro";
 ---
 
-<SectionContainer>
+<SectionContainer id="aboutme" class="bg-white">
   <div class="container">
     <div class="container-title">
       <h2>Sobre mí</h2>
@@ -47,17 +47,19 @@ import SectionContainer from "@/components/SectionContainer.astro";
 <style>
   .container {
     display: flex;
+    width: 100%;
     flex-direction: row;
-    align-items: flex-start;
-    gap: 3rem;
     color: black;
     margin-top: 5rem;
     margin-bottom: 5rem;
+    gap: 3rem;
   }
 
   .container-title {
     flex: 1;
     margin-bottom: 0;
+    height: 100%;
+    align-content: center;
   }
 
   .container-image {
@@ -66,9 +68,8 @@ import SectionContainer from "@/components/SectionContainer.astro";
 
   .container-image img {
     object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 350px;
+    max-width: 450px;
     height: auto;
     aspect-ratio: 1;
   }
@@ -94,11 +95,12 @@ import SectionContainer from "@/components/SectionContainer.astro";
   }
 
   .highlight {
-    color: #2563eb;
-    font-weight: 700;
+    color: #249529;
+    font-family: "Clash";
+    font-weight: 450;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .container {
       flex-direction: column;
       gap: 2rem;
@@ -115,7 +117,7 @@ import SectionContainer from "@/components/SectionContainer.astro";
     }
 
     .container-image img {
-      max-width: 250px;
+      max-width: 300px;
     }
 
     p {

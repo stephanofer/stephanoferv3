@@ -4,7 +4,7 @@ description: "Tienda online completa con carrito, pagos y panel de administraci√
 technologies: ["Astro", "tailwind","sentry", "workers"]
 github: "https://github.com/tuusuario/ecommerce-app"
 demo: "https://mi-ecommerce.vercel.app"
-image: "/project.png"
+image: "/profile.webp"
 featured: true
 publishDate: 2024-03-15
 status: "completed"
