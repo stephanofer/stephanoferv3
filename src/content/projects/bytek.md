@@ -5,6 +5,7 @@ technologies: ["Astro", "tailwind","sentry", "workers"]
 github: "https://github.com/tuusuario/ecommerce-app"
 demo: "https://mi-ecommerce.vercel.app"
 image: "/profile.webp"
+imageAlt: "Captura de pantalla de la página principal de Bytek mostrando el diseño moderno y profesional"
 featured: true
 publishDate: 2024-03-15
 status: "completed"

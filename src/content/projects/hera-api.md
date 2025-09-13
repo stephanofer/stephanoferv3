@@ -4,6 +4,7 @@ description: "API para datos de jugadores, tablas de clasificación y verificaci
 technologies: ["nestjs", "prisma", "sentry", "workers"]
 github: "https://github.com/tuusuario/ecommerce-app"
 image: "/project.png"
+imageAlt: "Captura de pantalla del logo de Hera Network"
 featured: true
 publishDate: 2024-03-15
 status: "completed"
