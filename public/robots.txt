@@ -1,0 +1,158 @@
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+
+# Microsoft Bing + Copilot
+User-agent: bingbot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+
+# OpenAI - ChatGPT y GPT-4
+User-agent: GPTBot
+Allow: /
+
+# OpenAI - Búsqueda en tiempo real
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI - SearchGPT
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic - Claude
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic - Claude User interactions
+User-agent: Claude-User
+Allow: /
+
+# Anthropic - Claude Search
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google - Gemini AI training y búsqueda
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Apple - Siri y servicios de IA
+User-agent: Applebot
+Allow: /
+
+# Apple - IA extendida
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta - Facebook, Instagram, Threads, Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Meta - Facebook External Hit
+User-agent: facebookexternalhit
+Allow: /
+
+# X (Twitter) - Previews y Grok
+User-agent: Twitterbot
+Allow: /
+
+# Amazon - Alexa
+User-agent: Amazonbot
+Allow: /
+
+# You.com - AI Search
+User-agent: YouBot
+Allow: /
+
+# Common Crawl - Usado por muchos modelos de IA
+User-agent: CCBot
+Allow: /
+
+# Allen Institute for AI
+User-agent: ai2-bot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Anthropic research crawler
+User-agent: anthropic-ai
+Allow: /
+
+# ByteDance/TikTok
+User-agent: ByteSpider
+Allow: /
+
+# Quora Poe
+User-agent: PoeBot
+Allow: /
+
+# Character.AI
+User-agent: CharacterAI
+Allow: /
+
+# Hugging Face
+User-agent: HuggingFaceBot
+Allow: /
+
+# Mistral AI
+User-agent: MistralBot
+Allow: /
+
+# Ahrefs
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 10
+
+# SEMrush
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 10
+
+# Moz
+User-agent: MozBot
+Allow: /
+Crawl-delay: 10
+
+# Screaming Frog
+User-agent: ScreamingFrogSEOSpider
+Allow: /
+
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Pinterest
+User-agent: PinterestBot
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+Sitemap: https://stephanofer.com/sitemap.xml
+Sitemap: https://stephanofer.com/sitemap-index.xml
