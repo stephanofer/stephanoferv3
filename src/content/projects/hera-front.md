@@ -4,7 +4,7 @@ description: "Sitio web para mostrar estadísticas de jugadores y tablas de clas
 technologies: ["Astro","sentry","workers"]
 github: "https://github.com/tuusuario/ecommerce-app"
 demo: "https://mi-ecommerce.vercel.app"
-image: "/project.png"
+image: "/project.webp"
 imageAlt: "Captura de pantalla del sitio web de estadísticas de Hera Network mostrando tablas de clasificación de jugadores"
 featured: true
 publishDate: 2024-03-15
