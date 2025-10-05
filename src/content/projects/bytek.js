@@ -4,7 +4,7 @@ description: "Sitio web diseñada para fortalecer la presencia digital de Bytek.
 technologies: ["Astro", "tailwind","sentry", "workers"]
 github: "https://github.com/tuusuario/ecommerce-app"
 demo: "https://mi-ecommerce.vercel.app"
-image: "/profile.webp"
+image: "/ilus.png"
 imageAlt: "Captura de pantalla de la página principal de Bytek mostrando el diseño moderno y profesional"
 featured: true
 publishDate: 2024-03-15

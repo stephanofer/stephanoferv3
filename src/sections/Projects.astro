@@ -11,7 +11,7 @@ const featuredProjects = projects.filter((project) => project.data.featured);
 const otherProjects = projects.filter((project) => !project.data.featured);
 ---
 
-<SectionContainer id="projects">
+<SectionContainer id="projects" >
   <div class="container">
     <div class="container-title">
       <h2>Algunos proyectos en los que He trabajado</h2>
@@ -73,7 +73,7 @@ const otherProjects = projects.filter((project) => !project.data.featured);
 
   .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     max-width: 100%;
     gap: 1.5rem 1rem;
 
