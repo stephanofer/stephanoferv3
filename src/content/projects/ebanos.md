@@ -9,5 +9,5 @@ imageAlt: "Vista previa de la landing page de Ebanos Muebles destacando producto
 featured: true
 publishDate: 2024-03-15
 status: "completed"
-order: 2
+order: 1
 ---

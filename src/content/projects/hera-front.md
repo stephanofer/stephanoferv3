@@ -9,5 +9,5 @@ imageAlt: "Captura de pantalla del sitio web de estadísticas de Hera Network mo
 featured: true
 publishDate: 2024-03-15
 status: "completed"
-order: 1
+order: 2
 ---
