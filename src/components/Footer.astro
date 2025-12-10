@@ -8,28 +8,28 @@ import Linkedin from "@/icons/linkedin.svg";
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-brand">
-      <a href="/" class="logo">
-        <h3>Stephano Fernandez</h3>
-        <span class="logo-description"> Desarrollador Web Full-Stack </span>
+      <a href="/" class="logo" aria-label="Stephano Fernandez - Ir al inicio">
+        <span class="logo-name">Stephano Fernandez</span>
+        <span class="logo-description">Desarrollador Web Full-Stack</span>
       </a>
     </div>
 
     <div class="footer-social">
       <div class="titles">
-        <h4 class="footer-nav-title">Hagamos juntos tu próximo proyecto</h4>
-        <span class="email">stephano.fernandez.03@gmail.com</span>
+        <p class="footer-nav-title">Hagamos juntos tu próximo proyecto</p>
+        <a href="mailto:stephano.fernandez.03@gmail.com" class="email">stephano.fernandez.03@gmail.com</a>
       </div>
-      <div class="socials">
-        <Link style="transparent" aria-label="GitHub Profile" href="https://github.com/stephanofer">
-          <Github width={24} height={24} />
+      <nav class="socials" aria-label="Redes sociales">
+        <Link style="transparent" aria-label="Visitar perfil de GitHub de Stephano Fernandez" href="https://github.com/stephanofer">
+          <Github width={24} height={24} aria-hidden="true" />
         </Link>
-        <Link style="transparent " aria-label="LinkedIn Profile" href="https://linkedin.com/in/stephanofer">
-          <Linkedin width={24} height={24} />
+        <Link style="transparent" aria-label="Visitar perfil de LinkedIn de Stephano Fernandez" href="https://linkedin.com/in/stephanofer">
+          <Linkedin width={24} height={24} aria-hidden="true" />
         </Link>
-        <Link style="transparent" aria-label="Send me an email" href="mailto:stephano.fernandez.03@gmail.com">
-          <Email width={24} height={24} />
+        <Link style="transparent" aria-label="Enviar correo a Stephano Fernandez" href="mailto:stephano.fernandez.03@gmail.com">
+          <Email width={24} height={24} aria-hidden="true" />
         </Link>
-      </div>
+      </nav>
     </div>
   </div>
 </footer>
@@ -50,11 +50,13 @@ import Linkedin from "@/icons/linkedin.svg";
     padding: 1.5rem;
   }
 
-  h3 {
+  .logo-name {
     font-family: "Clash";
     font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.5rem;
+    display: block;
+    color: white;
   }
 
   span {
@@ -83,16 +85,23 @@ import Linkedin from "@/icons/linkedin.svg";
     gap: 1rem;
   }
 
-  h4 {
+  .footer-nav-title {
     font-size: var(--fs-md);
     font-family: "Clash";
     font-weight: 500;
+    color: white;
+    margin: 0;
   }
 
   .email {
     display: block;
     text-align: center;
     font-size: var(--fs-base);
+    color: var(--color-text);
+  }
+
+  .email:hover {
+    color: var(--primary);
   }
 
   .socials {
@@ -111,7 +120,7 @@ import Linkedin from "@/icons/linkedin.svg";
       align-items: center;
     }
 
-    h4 {
+    .footer-nav-title {
       font-size: var(--fs-base);
     }
 

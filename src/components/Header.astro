@@ -4,16 +4,16 @@ import LinkCV from "@/components/LinkCV.astro";
 ---
 
 <header>
-  <div class="container">
-    <a href="/" class="logo">
-      <h3>Stephano Fernandez</h3>
-      <span> Desarrollador Web Full-Stack </span>
+  <nav class="container" aria-label="Navegación principal">
+    <a href="/" class="logo" aria-label="Stephano Fernandez - Ir al inicio">
+      <span class="logo-name">Stephano Fernandez</span>
+      <span class="logo-title">Desarrollador Web Full-Stack</span>
     </a>
     <div class="buttons">
       <LinkMensaje style="transparent" />
       <LinkCV style="green" />
     </div>
-  </div>
+  </nav>
 </header>
 
 <style>
@@ -39,14 +39,15 @@ import LinkCV from "@/components/LinkCV.astro";
     }
   }
 
-  h3 {
+  .logo-name {
     font-family: "Clash";
     font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.5rem;
+    display: block;
   }
 
-  span {
+  .logo-title {
     font-size: var(--fs-sm);
     color: var(--color-text);
   }

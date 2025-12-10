@@ -9,7 +9,9 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const url = "https://stephanofer.com";
+const siteUrl = "https://stephanofer.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = `${siteUrl}/opengraph.webp`;
 ---
 
 <meta charset="utf-8" />
@@ -17,6 +19,7 @@ const url = "https://stephanofer.com";
 <SEO
   title={title}
   description={description}
+  canonical={canonicalUrl}
   extend={{
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
@@ -24,19 +27,37 @@ const url = "https://stephanofer.com";
       {
         name: "keywords",
         content:
-          "Desarrollador web, Desarrolador Fullstack, Stephano, Fernandez, Stephano Fernandez, NestJS, Astro, Angular",
+          "Stephano Fernandez, Desarrollador Fullstack, Desarrollador de Software, Programador Web, NestJS, React, Astro, TypeScript, JavaScript, Lima Perú",
       },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "googlebot", content: "index, follow" },
+      { name: "geo.region", content: "PE-LIM" },
+      { name: "geo.placename", content: "Lima" },
     ],
-    link: [{ rel: "icon", type: "image/svg+xml", href: "favicon.svg" }],
+    link: [
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "sitemap", href: "/sitemap-index.xml" },
+    ],
   }}
   openGraph={{
     basic: {
       title: title,
       type: "website",
-      image: "/opengraph.webp",
+      image: ogImageUrl,
+      url: canonicalUrl,
     },
     optional: {
       description: description,
+      locale: "es_PE",
+      siteName: "Stephano Fernandez - Portfolio",
+    },
+    image: {
+      url: ogImageUrl,
+      secureUrl: ogImageUrl,
+      type: "image/webp",
+      width: 1200,
+      height: 630,
+      alt: "Stephano Fernandez - Desarrollador Fullstack",
     },
   }}
   twitter={{
@@ -45,9 +66,11 @@ const url = "https://stephanofer.com";
     creator: "@stephanofer",
     title: title,
     description: description,
-    image: "/opengraph.webp",
+    image: ogImageUrl,
   }}
 />
+
+<link rel="canonical" href={canonicalUrl} />
 
 <link
   rel="preload"
@@ -135,60 +158,183 @@ const url = "https://stephanofer.com";
   }
 </style>
 
-<!-- <script is:inline>
-  window.addEventListener("load", () => {
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-K6ZNK44M");
-  });
-</script> -->
-
+<!-- Schema JSON-LD: WebSite con SearchAction -->
 <script is:inline type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Stephano Fernandez",
-    "alternateName": "Stephanofer",
-    "url": "https://stephanofer.com/",
-    "image": "/profile.webp",
-    "jobTitle": "Desarrollador Fullstack",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelance"
-    },
-    "description": "Desarrollador Fullstack con experiencia en proyectos innovadores. Especializado en React, Angular, Node.js y tecnologías modernas.",
-    "email": "stephano.fernandez.03@gmail.com",
-    "telephone": "+51981314610",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "PE"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/stephanofer",
-      "https://github.com/stephanofer",
-      "https://twitter.com/stephanofer"
-    ],
-    "knowsAbout": [
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Angular",
-      "Node.js",
-      "NestJS",
-      "Git",
-      "Linux",
-      "Docker",
-      "Desarrollo Fullstack",
-      "Desarrollo Web"
-    ],
-    "alumniOf": "Universidad/Institución",
-    "birthPlace": "Lima, Perú"
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://stephanofer.com/#website",
+  "name": "Stephano Fernandez - Portfolio",
+  "alternateName": ["Stephano Fernandez", "Stephanofer"],
+  "url": "https://stephanofer.com",
+  "description": "Portfolio profesional de Stephano Fernandez, Desarrollador Fullstack especializado en React, NestJS, TypeScript y tecnologías modernas.",
+  "inLanguage": "es-PE",
+  "publisher": {
+    "@id": "https://stephanofer.com/#person"
   }
+}
+</script>
+
+<!-- Schema JSON-LD: WebPage -->
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://stephanofer.com/#webpage",
+  "url": "https://stephanofer.com",
+  "name": "Stephano Fernandez - Desarrollador Fullstack",
+  "description": "Desarrollador de Software Fullstack. Desarrollo soluciones web que impactan y crecen contigo. Especializado en React, NestJS, TypeScript.",
+  "isPartOf": {
+    "@id": "https://stephanofer.com/#website"
+  },
+  "about": {
+    "@id": "https://stephanofer.com/#person"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://stephanofer.com/profile.webp",
+    "width": 450,
+    "height": 450
+  },
+  "datePublished": "2024-01-01",
+  "dateModified": "2024-12-09",
+  "inLanguage": "es-PE"
+}
+</script>
+
+<!-- Schema JSON-LD: Person (Entidad principal para posicionamiento por nombre) -->
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://stephanofer.com/#person",
+  "name": "Stephano Fernandez",
+  "givenName": "Stephano",
+  "familyName": "Fernandez",
+  "alternateName": ["Stephanofer", "Stephano Fernández", "stephanofer"],
+  "url": "https://stephanofer.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://stephanofer.com/profile.webp",
+    "width": 450,
+    "height": 450,
+    "caption": "Stephano Fernandez - Desarrollador Fullstack"
+  },
+  "jobTitle": "Desarrollador de Software Fullstack",
+  "description": "Desarrollador Fullstack con experiencia en proyectos innovadores. Especializado en React, NestJS, TypeScript, Astro y tecnologías modernas. Creo soluciones web escalables y de alto rendimiento.",
+  "email": "stephano.fernandez.03@gmail.com",
+  "telephone": "+51981314610",
+  "nationality": {
+    "@type": "Country",
+    "name": "Perú"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lima",
+    "addressRegion": "Lima",
+    "addressCountry": "PE"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/stephanofer",
+    "https://github.com/stephanofer",
+    "https://twitter.com/stephanofer",
+    "https://x.com/stephanofer"
+  ],
+  "knowsAbout": [
+    "Desarrollo Web",
+    "Desarrollo Fullstack",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "NestJS",
+    "Astro",
+    "Node.js",
+    "Prisma ORM",
+    "PostgreSQL",
+    "Git",
+    "Docker",
+    "Cloudflare Workers",
+    "APIs REST",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Desarrollador de Software Fullstack",
+    "occupationLocation": {
+      "@type": "City",
+      "name": "Lima"
+    },
+    "skills": "JavaScript, TypeScript, React, NestJS, Node.js, Astro, Prisma, PostgreSQL"
+  },
+  "mainEntityOfPage": {
+    "@id": "https://stephanofer.com/#webpage"
+  }
+}
+</script>
+
+<!-- Schema JSON-LD: ProfilePage (Mejora señal de entidad) -->
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@id": "https://stephanofer.com/#person"
+  },
+  "dateCreated": "2024-01-01",
+  "dateModified": "2024-12-09"
+}
+</script>
+
+<!-- Schema JSON-LD: ItemList para proyectos -->
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Proyectos de Stephano Fernandez",
+  "description": "Portfolio de proyectos de desarrollo web realizados por Stephano Fernandez",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Ebanos Muebles - Landing Page",
+        "description": "Sitio web con el objetivo de fortalecer la presencia digital de la marca Ebanos Muebles. Incluye secciones optimizadas para captar leads.",
+        "url": "https://ebanosmuebles.com/",
+        "author": {
+          "@id": "https://stephanofer.com/#person"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Hera Network - Estadísticas",
+        "description": "Sitio web para mostrar estadísticas de jugadores y tablas de clasificación para todos los modos de juego en Hera Network.",
+        "url": "https://estadisticas.heramc.net/",
+        "author": {
+          "@id": "https://stephanofer.com/#person"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "Hera Network - API",
+        "description": "API para datos de jugadores, tablas de clasificación y verificaciones de salud del ecosistema.",
+        "programmingLanguage": ["TypeScript", "NestJS"],
+        "author": {
+          "@id": "https://stephanofer.com/#person"
+        }
+      }
+    }
+  ]
+}
 </script>

@@ -84,17 +84,18 @@ const iconMap: Record<string, any> = {
 };
 ---
 
-<div class="container">
-  <Add class="corner corner-top-left" width={14} height={14} />
-  <Add class="corner corner-top-right" width={14} height={14} />
-  <Add class="corner corner-bottom-left" width={14} height={14} />
-  <Add class="corner corner-bottom-right" width={14} height={14} />
+<article class="container" itemscope itemtype="https://schema.org/CreativeWork">
+  <Add class="corner corner-top-left" width={14} height={14} aria-hidden="true" />
+  <Add class="corner corner-top-right" width={14} height={14} aria-hidden="true" />
+  <Add class="corner corner-bottom-left" width={14} height={14} aria-hidden="true" />
+  <Add class="corner corner-bottom-right" width={14} height={14} aria-hidden="true" />
   <div class="container-image">
-    {image && <img src={image} alt={imageAlt} />}
+    {image && <img src={image} alt={imageAlt} itemprop="image" loading="lazy" />}
   </div>
   <div class="container-description">
-    <h3>{title}</h3>
-    <span>{description}</span>
+    <h3 itemprop="name">{title}</h3>
+    <p class="project-description" itemprop="description">{description}</p>
+    <time datetime={publishDate.toISOString().split('T')[0]} itemprop="datePublished" class="visually-hidden">{publishDate.toISOString().split('T')[0]}</time>
     <div
       class:list={["technologies", technologies.length > 3 ? "has-more" : ""]}
     >
@@ -124,6 +125,7 @@ const iconMap: Record<string, any> = {
             class="code"
             target="_blank"
             rel="noopener noreferrer"
+            itemprop="codeRepository"
           >
             Revisar Código
           </a>
@@ -142,7 +144,7 @@ const iconMap: Record<string, any> = {
       </Link>
     </div>
   </div>
-</div>
+</article>
 
 <style>
   .container {
@@ -293,7 +295,7 @@ const iconMap: Record<string, any> = {
     }
   }
 
-  span {
+  .project-description {
     font-size: var(--fs-base);
     color: var(--color-text);
     display: block;
@@ -306,6 +308,18 @@ const iconMap: Record<string, any> = {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .technologies {
