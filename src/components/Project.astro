@@ -15,6 +15,7 @@ import TypeScriptIcon from "@/icons/typescript.svg";
 import Web from "@/icons/web.svg";
 import WorkersIcon from "@/icons/workers.svg";
 import TechnologyPill from "./TechnologyPill.astro";
+import MySQLIcon from "@/icons/mysql.svg";
 
 interface Props {
   title: string;
@@ -81,21 +82,53 @@ const iconMap: Record<string, any> = {
     icon: TailwindIcon,
     name: "Tailwind CSS",
   },
+  mysql: {
+    icon: MySQLIcon,
+    name: "MySQL",
+  },
 };
 ---
 
 <article class="container" itemscope itemtype="https://schema.org/CreativeWork">
-  <Add class="corner corner-top-left" width={14} height={14} aria-hidden="true" />
-  <Add class="corner corner-top-right" width={14} height={14} aria-hidden="true" />
-  <Add class="corner corner-bottom-left" width={14} height={14} aria-hidden="true" />
-  <Add class="corner corner-bottom-right" width={14} height={14} aria-hidden="true" />
+  <Add
+    class="corner corner-top-left"
+    width={14}
+    height={14}
+    aria-hidden="true"
+  />
+  <Add
+    class="corner corner-top-right"
+    width={14}
+    height={14}
+    aria-hidden="true"
+  />
+  <Add
+    class="corner corner-bottom-left"
+    width={14}
+    height={14}
+    aria-hidden="true"
+  />
+  <Add
+    class="corner corner-bottom-right"
+    width={14}
+    height={14}
+    aria-hidden="true"
+  />
   <div class="container-image">
-    {image && <img src={image} alt={imageAlt} itemprop="image" loading="lazy" />}
+    {
+      image && (
+        <img src={image} alt={imageAlt} itemprop="image" loading="lazy" />
+      )
+    }
   </div>
   <div class="container-description">
     <h3 itemprop="name">{title}</h3>
     <p class="project-description" itemprop="description">{description}</p>
-    <time datetime={publishDate.toISOString().split('T')[0]} itemprop="datePublished" class="visually-hidden">{publishDate.toISOString().split('T')[0]}</time>
+    <time
+      datetime={publishDate.toISOString().split("T")[0]}
+      itemprop="datePublished"
+      class="visually-hidden">{publishDate.toISOString().split("T")[0]}</time
+    >
     <div
       class:list={["technologies", technologies.length > 3 ? "has-more" : ""]}
     >
